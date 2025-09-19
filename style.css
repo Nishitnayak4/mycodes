@@ -997,11 +997,11 @@
             background: 
                 var(---course-bg-image) no-repeat center center / cover ,
                 #111; /* fallback color */
-        background-size:  439%;
+       
             text-align: center;
             color: #eee;
         }
-
+    
         .campus h1 {
             font-size: 2.8rem;
             color: #ffb347;
