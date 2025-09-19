@@ -929,7 +929,7 @@
                  left: -20%;
             }
             .spider-man .lego-body::after {
-            content: "🕷" ;
+            content: "𖢥" ;
             position: absolute;
             width: 0;
             background-color:transparent;
@@ -1270,4 +1270,5 @@
             height: 100%;
         }
         }
+
 
