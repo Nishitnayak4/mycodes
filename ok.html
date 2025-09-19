@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marvel Lego Comic with Faces</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #2c3e50 0%, #1a1a2e 100%);
+            font-family: 'Arial', sans-serif;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+        
+        .comic-container {
+            width: 100%;
+            max-width: 900px;
+            height: 600px;
+            background: #1c1f26;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+            border: 5px solid #f0131e;
+        }
+        
+        .comic-panel {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: #fff;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+            z-index: 1;
+        }
+        
+        .comic-panel.active {
+            opacity: 1;
+            z-index: 2;
+        }
+        
+        .comic-header {
+            text-align: center;
+            margin-bottom: 30px;
+            width: 100%;
+        }
+        
+        .comic-title {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            color: #f0131e;
+            text-shadow: 3px 3px 0 #000, 
+                         -1px -1px 0 #000, 
+                         1px -1px 0 #000, 
+                         -1px 1px 0 #000, 
+                         1px 1px 0 #000;
+            letter-spacing: 2px;
+            font-family: 'Bangers', cursive;
+        }
+        
+        .comic-subtitle {
+            font-size: 1.5rem;
+            color: #333;
+            font-weight: bold;
+            font-family: 'Bangers', cursive;
+            letter-spacing: 1px;
+        }
+        
+        .lego-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 20px;
+        }
+        
+        .lego-character {
+            width: 120px;
+            height: 180px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            animation: float 4s infinite ease-in-out;
+            cursor: pointer;
+        }
+        
+        .lego-head {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            position: relative;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .lego-body {
+            width: 100px;
+            height: 80px;
+            border-radius: 10px;
+            margin-top: -5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .lego-legs {
+            width: 120px;
+            height: 40px;
+            display: flex;
+            justify-content: space-between;
+            margin-top: -5px;
+        }
+        
+        .lego-leg {
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+        }
+        
+        /* Face styles */
+        .lego-face {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .lego-eyes {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        
+        .lego-eye {
+            width: 12px;
+            height: 12px;
+            background: #000;
+            border-radius: 50%;
+            position: relative;
+        }
+        
+        .lego-eye::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+        }
+        
+        .lego-mouth {
+            width: 30px;
+            height: 10px;
+            border-radius: 0 0 15px 15px;
+            background: #000;
+            position: relative;
+        }
+        
+        /* Iron Man Lego */
+        .iron-man .lego-head {
+            background: #cc0000;
+            border: 3px solid #ffcc00;
+            box-shadow: 0 0 10px #ffcc00;
+        }
+        
+        .iron-man .lego-body {
+            background: #cc0000;
+            border: 3px solid #ffcc00;
+        }
+        
+        .iron-man .lego-leg {
+            background: #cc0000;
+            border: 3px solid #ffcc00;
+        }
+        
+        .iron-man .lego-face {
+            transform: translateY(5px);
+        }
+        
+        .iron-man .lego-eye {
+            background: #ffcc00;
+            border: 2px solid #000;
+            border-radius: 50%;
+        }
+        
+        .iron-man .lego-mouth {
+            width: 25px;
+            height: 5px;
+            background: #ffcc00;
+            border: 2px solid #000;
+            border-radius: 5px;
+        }
+        
+        /* Captain America Lego */
+        .captain-america .lego-head {
+            background: #fff;
+            border: 3px solid #0066cc;
+        }
+        
+        .captain-america .lego-body {
+            background: #0066cc;
+            border: 3px solid #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .captain-america .lego-body::before {
+            content: "";
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: #fff;
+            border-radius: 50%;
+            border: 3px solid #0066cc;
+        }
+        
+        .captain-america .lego-body::after {
+            content: "★";
+            position: absolute;
+            color: #0066cc;
+            font-size: 30px;
+        }
+        
+        .captain-america .lego-leg {
+            background: #0066cc;
+            border: 3px solid #fff;
+        }
+        
+        .captain-america .lego-face {
+            transform: translateY(5px);
+        }
+        
+        .captain-america .lego-mouth {
+            width: 20px;
+            height: 5px;
+            background: #000;
+            border-radius: 5px;
+        }
+        
+        /* Spider-Man Lego */
+        .spider-man .lego-head {
+            background: #cc0000;
+            border: 3px solid #000;
+        }
+        
+        .spider-man .lego-body {
+            background: #cc0000;
+            border: 3px solid #000;
+            position: relative;
+        }
+        
+        .spider-man .lego-body::before {
+            content: "";
+            position: absolute;
+            width: 80%;
+            height: 20px;
+            background: #000;
+            border-radius: 10px;
+        }
+        
+        .spider-man .lego-body::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 80%;
+            background: #000;
+            border-radius: 10px;
+        }
+        
+        .spider-man .lego-leg {
+            background: #cc0000;
+            border: 3px solid #000;
+        }
+        
+        .spider-man .lego-face {
+            transform: translateY(5px);
+        }
+        
+        .spider-man .lego-eyes {
+            gap: 15px;
+        }
+        
+        .spider-man .lego-eye {
+            width: 15px;
+            height: 20px;
+            background: #000;
+            border-radius: 50% 50% 0 0;
+            clip-path: polygon(0 0, 100% 0, 100% 70%, 0 70%);
+        }
+        
+        .spider-man .lego-mouth {
+            width: 25px;
+            height: 8px;
+            background: #000;
+            border-radius: 0 0 10px 10px;
+        }
+        
+        /* Hulk Lego */
+        .hulk .lego-head {
+            background: #339966;
+            border: 3px solid #206040;
+        }
+        
+        .hulk .lego-body {
+            background: #339966;
+            border: 3px solid #206040;
+            position: relative;
+        }
+        
+        .hulk .lego-body::before {
+            content: "H";
+            position: absolute;
+            color: #206040;
+            font-size: 40px;
+            font-weight: bold;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        .hulk .lego-leg {
+            background: #339966;
+            border: 3px solid #206040;
+        }
+        
+        .hulk .lego-face {
+            transform: translateY(5px);
+        }
+        
+        .hulk .lego-eyes {
+            gap: 15px;
+        }
+        
+        .hulk .lego-eye {
+            width: 15px;
+            height: 15px;
+            background: #206040;
+            border: 2px solid #000;
+            border-radius: 50%;
+        }
+        
+        .hulk .lego-mouth {
+            width: 35px;
+            height: 15px;
+            background: #206040;
+            border: 2px solid #000;
+            border-radius: 0 0 15px 15px;
+        }
+        
+        /* Thanos Lego */
+        .thanos .lego-head {
+            background: #6a0dad;
+            border: 3px solid #4b0082;
+        }
+        
+        .thanos .lego-body {
+            background: #6a0dad;
+            border: 3px solid #4b0082;
+            position: relative;
+        }
+        
+        .thanos .lego-leg {
+            background: #6a0dad;
+            border: 3px solid #4b0082;
+        }
+        
+        .thanos .lego-face {
+            transform: translateY(5px);
+        }
+        
+        .thanos .lego-eyes {
+            gap: 12px;
+        }
+        
+        .thanos .lego-eye {
+            width: 12px;
+            height: 12px;
+            background: #ffd700;
+            border: 2px solid #000;
+            border-radius: 50%;
+        }
+        
+        .thanos .lego-mouth {
+            width: 25px;
+            height: 8px;
+            background: #000;
+            border-radius: 5px;
+        }
+        
+        .lego-dots {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .lego-dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
+        }
+        
+        .speech-bubble {
+            position: absolute;
+            background: #fff;
+            border: 3px solid #000;
+            border-radius: 20px;
+            padding: 15px;
+            font-family: 'Bangers', cursive;
+            font-size: 1.2rem;
+            color: #000;
+            max-width: 180px;
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.5s ease;
+            z-index: 20;
+        }
+        
+        .speech-bubble::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border-right: 3px solid #000;
+            border-bottom: 3px solid #000;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+        }
+        
+        .comic-action {
+            position: absolute;
+            font-family: 'Bangers', cursive;
+            font-size: 2.5rem;
+            color: #f0131e;
+            text-shadow: 2px 2px 0 #000;
+            letter-spacing: 1px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .comic-background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.8) 2px, transparent 3px),
+                radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.8) 2px, transparent 3px),
+                radial-gradient(circle at 40% 10%, rgba(255, 255, 255, 0.8) 2px, transparent 3px),
+                radial-gradient(circle at 65% 85%, rgba(255, 255, 255, 0.8) 2px, transparent 3px),
+                linear-gradient(135deg, #ffd700 0%, #ffcc00 100%);
+            background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+            background-position: 0 0, 0 0, 0 0, 0 0, 0 0;
+            z-index: 0;
+        }
+        
+        .comic-controls {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+        }
+        
+        .comic-btn {
+            padding: 12px 25px;
+            background: #f0131e;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Bangers', cursive;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 0 #9e0c14;
+        }
+        
+        .comic-btn:hover {
+            transform: translateY(3px);
+            box-shadow: 0 2px 0 #9e0c14;
+        }
+        
+        .comic-btn:active {
+            transform: translateY(5px);
+            box-shadow: none;
+        }
+        
+        .comic-btn.prev {
+            background: #0066cc;
+            box-shadow: 0 5px 0 #004080;
+        }
+        
+        .comic-btn.prev:hover {
+            box-shadow: 0 2px 0 #004080;
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Panel specific styles */
+        #panel2 .lego-character {
+            animation-delay: calc(var(--delay) * 0.5s);
+        }
+        
+        #panel3 .lego-character {
+            animation: bounce 2s infinite ease-in-out;
+            animation-delay: calc(var(--delay) * 0.3s);
+        }
+        
+        #panel4 .lego-character {
+            animation: spin 4s infinite linear;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .comic-title {
+                font-size: 2.5rem;
+            }
+            
+            .comic-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .lego-container {
+                gap: 20px;
+            }
+            
+            .lego-character {
+                width: 80px;
+                height: 140px;
+            }
+            
+            .lego-head {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .lego-body {
+                width: 70px;
+                height: 60px;
+            }
+            
+            .lego-legs {
+                width: 80px;
+            }
+            
+            .lego-leg {
+                width: 30px;
+                height: 30px;
+            }
+            
+            .lego-face {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .lego-eye {
+                width: 8px;
+                height: 8px;
+            }
+            
+            .lego-mouth {
+                width: 20px;
+                height: 6px;
+            }
+            
+            .speech-bubble {
+                font-size: 1rem;
+                max-width: 120px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="comic-container">
+        <div class="comic-background"></div>
+        
+        <!-- Panel 1: Title Screen -->
+        <div class="comic-panel active" id="panel1">
+            <div class="comic-header">
+                <h1 class="comic-title">MARVEL LEGO ADVENTURE</h1>
+                <p class="comic-subtitle">ASSEMBLE YOUR HEROES!</p>
+            </div>
+            
+            <div class="lego-container">
+                <div class="lego-character iron-man" style="--delay: 0;">
+                    <div class="lego-head">
+                        <div class="lego-face">
+                            <div class="lego-eyes">
+                                <div class="lego-eye"></div>
+                                <div class="lego-eye"></div>
+                            </div>
+                            <div class="lego-mouth"></div>
+                        </div>
+                    </div>
+                    <div class="lego-body"></div>
+                    <div class="lego-legs">
+                        <div class="lego-leg"></div>
+                        <div class="lego-leg"></div>
+                    </div>
+                </div>
+                
+                <div class="lego-character captain-america" style="--delay: 1;">
+                    <div class="lego-head">
+                        <div class="lego-face">
+                            <div class="lego-eyes">
+                                <div class="lego-eye"></div>
+                                <div class="lego-eye"></div>
+                            </div>
+                            <div class="lego-mouth"></div>
+                        </div>
+                    </div>
+                    <div class="lego-body"></div>
+                    <div class="lego-legs">
+                        <div class="lego-leg"></div>
+                        <div class="lego-leg"></div>
+                    </div>
+                </div>
+                
+                <div class="lego-character spider-man" style="--delay: 2;">
+                    <div class="lego-head">
+                        <div class="lego-face">
+                            <div class="lego-eyes">
+                                <div class="lego-eye"></div>
+                                <div class="lego-eye"></div>
+                            </div>
+                            <div class="lego-mouth"></div>
+                        </div>
+                    </div>
+                    <div class="lego-body"></div>
+                    <div class="lego-legs">
+                        <div class="lego-leg"></div>
+                        <div class="lego-leg"></div>
+                    </div>
+                </div>
+                
+                <div class="lego-character hulk" style="--delay: 3;">
+                    <div class="lego-head">
+                        <div class="lego-face">
+                            <div class="lego-eyes">
+                                <div class="lego-eye"></div>
+                                <div class="lego-eye"></div>
+                            </div>
+                            <div class="lego-mouth"></div>
+                        </div>
+                    </div>
+                    <div class="lego-body"></div>
+                    <div class="lego-legs">
+                        <div class="lego-leg"></div>
+                        <div class="lego-leg"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="speech-bubble" style="top: 180px; left: 240px;">
+                I am Iron Man!
+            </div>
+            
+            <div class="speech-bubble" style="top: 220px; right: 240px;">
+                Avengers Assemble!
+            </div>
+            
+            <div class="comic-action" style="bottom: 100px;">
+                CLICK NEXT TO BEGIN!
+            </div>
+        </div>
+        
+        <!-- Panel 2: Battle Scene -->
+        <!--   <div class="comic-panel" id="panel2">
+            <div class="comic-header">
+                <h2 class="comic-title" style="font-size: 2.5rem;">BATTLE AGAINST THANOS</h2>
+                <p class="comic-subtitle">THE FATE OF THE UNIVERSE HANGS IN THE BALANCE</p>
+            </div>
+            
+            <div class="lego-container">
+                <div class="lego-character iron-man" style="--delay: 0;">
+                    <div class="lego-head">
+                        <div class="lego-face">
+                            <div class="lego-eyes">
+                                <div class="lego-eye"></div>
+                                <div class="lego-eye"></div>
+                            </div>
+                            <div class="lego-mouth"></div>
+                        </div>
+                    </div>
+                    <div class="lego-body"></div>
+                    <div class="lego-legs">
+                        <div class="lego-leg"></div>
+                        <div class="lego-leg"></div>
+                    </div>
+                </div>
+                
+                <div class="lego-character captain-america" style="--delay: 1;">
+                    <div class="lego-head">
+                        <div class="lego-face">
+                            <div class="lego-eyes">
+                                <div class="lego-eye"></div>
+                                <div class="lego-eye"></div>
+                            </div>
+                            <div class="lego-mouth"></div>
+                        </div>
+                    </div>
+                    <div class="lego-body"></div>
+                    <div class="lego-legs">
+                        <div class="lego-leg"></div>
+                        <div class="lego-leg"></div>
+                    </div>
+                </div>
+                
+                <div class="lego-character thanos" style="--delay: 2;">
+                    <div class="lego-head">
+                        <div class="lego-face">
+                            <div class="lego-eyes">
+                                <div class="lego-eye"></div>
+                                <div class="lego-eye"></div>
+                            </div>
+                            <div class="lego-mouth"></div>
+                        </div>
+                    </div>
+                    <div class="lego-body" style="background: #6a0dad; border: 3px solid #4b0082;">
+                        <div style="position: absolute; width: 30px; height: 30px; background: #ffd700; border-radius: 50%;"></div>
+                    </div>
+                    <div class="lego-legs">
+                        <div class="lego-leg" style="background: #6a0dad; border: 3px solid #4b0082;"></div>
+                        <div class="lego-leg" style="background: #6a0dad; border: 3px solid #4b0082;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="speech-bubble" style="top: 180px; left: 180px;">
+                Friday, deploy all defenses!
+            </div>
+            
+            <div class="speech-bubble" style="top: 180px; right: 180px;">
+                I am inevitable!
+            </div>
+            
+            <div class="comic-action" style="bottom: 100px; left: 50%; transform: translateX(-50%);">
+                KABOOM! BANG! POW!
+            </div>
+        </div>
+        
+        <!-- Panel 3: Victory Scene 
+        <div class="comic-panel" id="panel3">
+            <div class="comic-header">
+                <h2 class="comic-title" style="font-size: 2.5rem;">VICTORY!</h2>
+                <p class="comic-subtitle">THE HEROES TRIUMPH ONCE AGAIN</p>
+            </div>
+            
+            <div class="lego-container">
+                <div class="lego-character iron-man" style="--delay: 0;">
+                    <div class="lego-head">
+                        <div class="lego-face">
+                            <div class="lego-eyes">
+                                <div class="lego-eye"></div>
+                                <div class="lego-eye"></div>
+                            </div>
+                            <div class="lego-mouth"></div>
+                        </div>
+                    </div>
+                    <div class="lego-body"></div>
+                    <div class="lego-legs">
+                        <div class="lego-leg"></div>
+                        <div class="lego-leg"></div>
+                    </div>
+                </div>
+                
+                <div class="lego-character captain-america" style="--delay: 1;">
+                    <div class="lego-head">
+                        <div class="lego-face">
+                            <div class="lego-eyes">
+                                <div class="lego-eye"></div>
+                                <div class="lego-eye"></div>
+                            </div>
+                            <div class="lego-mouth"></div>
+                        </div>
+                    </div>
+                    <div class="lego-body"></div>
+                    <div class="lego-legs">
+                        <div class="lego-leg"></div>
+                        <div class="lego-leg"></div>
+                    </div>
+                </div>
+                
+                <div class="lego-character spider-man" style="--delay: 2;">
+                    <div class="lego-head">
+                        <div class="lego-face">
+                            <div class="lego-eyes">
+                                <div class="lego-eye"></div>
+                                <div class="lego-eye"></div>
+                            </div>
+                            <div class="lego-mouth"></div>
+                        </div>
+                    </div>
+                    <div class="lego-body"></div>
+                    <div class="lego-legs">
+                        <div class="lego-leg"></div>
+                        <div class="lego-leg"></div>
+                    </div>
+                </div>
+                
+                <div class="lego-character hulk" style="--delay: 3;">
+                    <div class="lego-head">
+                        <div class="lego-face">
+                            <div class="lego-eyes">
+                                <div class="lego-eye"></div>
+                                <div class="lego-eye"></div>
+                            </div>
+                            <div class="lego-mouth"></div>
+                        </div>
+                    </div>
+                    <div class="lego-body"></div>
+                    <div class="lego-legs">
+                        <div class="lego-leg"></div>
+                        <div class="lego-leg"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="speech-bubble" style="top: 180px; left: 240px;">
+                We did it, Mr. Stark!
+            </div>
+            
+            <div class="speech-bubble" style="top: 220px; right: 240px;">
+                Hulk smash celebration!
+            </div>
+            
+            <div class="comic-action" style="bottom: 100px; left: 50%; transform: translateX(-50%);">
+                CHEERS! APPLAUSE!
+            </div>
+        </div>
+    </div> -->
+    
+    <div class="comic-controls">
+        <button class="comic-btn prev" id="prevBtn">PREV</button>
+        <button class="comic-btn next" id="nextBtn">NEXT</button>
+    </div>
+  </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const panels = document.querySelectorAll('.comic-panel');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const speechBubbles = document.querySelectorAll('.speech-bubble');
+            const actionTexts = document.querySelectorAll('.comic-action');
+            let currentPanel = 0;
+            
+            // Initialize
+            showPanel(currentPanel);
+            
+            // Next button event
+            nextBtn.addEventListener('click', function() {
+                if (currentPanel < panels.length - 1) {
+                    currentPanel++;
+                    showPanel(currentPanel);
+                }
+            });
+            
+            // Previous button event
+            prevBtn.addEventListener('click', function() {
+                if (currentPanel > 0) {
+                    currentPanel--;
+                    showPanel(currentPanel);
+                }
+            });
+            
+            // Show specific panel
+            function showPanel(index) {
+                panels.forEach(panel => panel.classList.remove('active'));
+                panels[index].classList.add('active');
+                
+                // Update button states
+                prevBtn.disabled = (index === 0);
+                nextBtn.disabled = (index === panels.length - 1);
+                
+                // Animate elements in the active panel
+                setTimeout(() => {
+                    const currentSpeechBubbles = panels[index].querySelectorAll('.speech-bubble');
+                    const currentActionTexts = panels[index].querySelectorAll('.comic-action');
+                    
+                    currentSpeechBubbles.forEach((bubble, i) => {
+                        setTimeout(() => {
+                            bubble.style.opacity = 1;
+                            bubble.style.transform = 'scale(1)';
+                        }, 500 * (i + 1));
+                    });
+                    
+                    currentActionTexts.forEach((action, i) => {
+                        setTimeout(() => {
+                            action.style.opacity = 1;
+                            action.style.transform = 'translateY(0)';
+                        }, 800 * (i + 1));
+                    });
+                }, 300);
+            }
+            
+            // Add random lego dots for texture
+            function addLegoDots() {
+                const containers = document.querySelectorAll('.lego-character');
+                
+                containers.forEach(container => {
+                    for (let i = 0; i < 6; i++) {
+                        const dot = document.createElement('div');
+                        dot.classList.add('lego-dot');
+                        dot.style.top = Math.random() * 160 + 'px';
+                        dot.style.left = Math.random() * 100 + 'px';
+                        container.appendChild(dot);
+                    }
+                });
+            }
+            
+            addLegoDots();
+        });
+    </script>
+</body>
+</html>

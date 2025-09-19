@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taarangan 2k25 - Marvel Multiverse Madness</title>
+
+  <!-- FontAwesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- HEADER & NAVIGATION -->
+  <section class="header">
+    <nav>
+      <div class="logo">
+        <img src="img/marvel-logo.jpg" alt="Taarangan Logo">
+      </div>
+      <div class="nav-links" id="navLinks">
+        <i class="fa fa-xmark" onclick="hideMenu()"></i>
+        <ul>
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+          <li><a href="team.html">TEAM</a></li>
+          <li><a href="events.html">EVENTS</a></li>
+          <!-- <li><a href="leaderboard.html" class="active">LEADERBOARD</a></li> -->
+          <li><a href="contact.html">CONTACT</a></li>
+          <li><a href="gallery.html">GALLERY</a></li>
+           <li> <i class="fab fa-instagram" style="margin-right:6%" ></i> <i class="fab fa-facebook-square" style="margin-right:6%"></i> <i class="fa-solid fa-user"></i> </li>
+        </ul>
+      </div>
+      <i class="fa fa-bars" onclick="showMenu()"></i>
+    </nav>
+<!-- MARVEL LEGO COMIC SECTION -->
+  <section class="marvel-comic-section">
+    
+    
+    <div class="comic-container">
+      <div class="comic-background"></div>
+      
+      <!-- Panel 1: Title Screen -->
+      <div class="comic-panel active" id="panel1">
+        <div class="comic-header">
+          <h1 class="comic-title">Taarangan ADVENTURE 24-25</h1>
+          <p class="comic-subtitle">ASSEMBLE YOUR HEROES!</p>
+        </div>
+        
+        <div class="lego-container">
+          <div class="lego-character iron-man" style="--delay: 0;">
+            <div class="lego-head">
+              <div class="lego-face">
+                <div class="lego-eyes">
+                  <div class="lego-eye"></div>
+                  <div class="lego-eye"></div>
+                </div>
+                <div class="lego-mouth"></div>
+              </div>
+            </div>
+            <div class="lego-body"></div>
+         <div class="arc-reactor"></div>
+            <div class="lego-legs">
+              <div class="lego-leg"></div>
+              <div class="lego-leg"></div>
+            </div>
+          </div>
+          
+          <div class="lego-character captain-america" style="--delay: 1;">
+            <div class="lego-head">
+              <div class="lego-face">
+                <div class="lego-eyes">
+                  <div class="lego-eye"></div>
+                  <div class="lego-eye"></div>
+                </div>
+                <div class="lego-mouth"></div>
+              </div>
+            </div>
+            <div class="lego-body"></div>
+            <div class="lego-legs">
+              <div class="lego-leg"></div>
+              <div class="lego-leg"></div>
+            </div>
+          </div>
+          
+          <div class="lego-character spider-man" style="--delay: 2;">
+            <div class="lego-head">
+              <div class="lego-face">
+                <div class="lego-eyes">
+                  <div class="lego-eye"></div>
+                  <div class="lego-eye"></div>
+                </div>
+                <div class="lego-mouth"></div>
+              </div>
+            </div>
+            <div class="lego-body"></div>
+            <div class="lego-legs">
+              <div class="lego-leg"></div>
+              <div class="lego-leg"></div>
+            </div>
+          </div>
+          
+          <div class="lego-character hulk" style="--delay: 3;">
+            <div class="lego-head">
+              <div class="lego-face">
+                <div class="lego-eyes">
+                  <div class="lego-eye"></div>
+                  <div class="lego-eye"></div>
+                </div>
+                <div class="lego-mouth"></div>
+              </div>
+            </div>
+            <div class="lego-body"></div>
+            <div class="lego-legs">
+              <div class="lego-leg"></div>
+              <div class="lego-leg"></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="speech-bubble" style="top: 180px; left: 240px;">
+          I am Iron Man!
+        </div>
+        
+        <div class="speech-bubble" style="top: 220px; right: 240px;">
+          Avengers Assemble!
+        </div>
+        
+        <div class="comic-action" style="bottom: 100px;">
+          CLICK NEXT TO BEGIN!
+        </div>
+      </div>
+      
+      <!-- Panel 2: Battle Scene 
+      <div class="comic-panel" id="panel2">
+        <div class="comic-header">
+          <h2 class="comic-title" style="font-size: 2.5rem;">BATTLE AGAINST THANOS</h2>
+          <p class="comic-subtitle">THE FATE OF THE UNIVERSE HANGS IN THE BALANCE</p>
+        </div>
+        
+        <div class="lego-container">
+          <div class="lego-character iron-man" style="--delay: 0;">
+            <div class="lego-head">
+              <div class="lego-face">
+                <div class="lego-eyes">
+                  <div class="lego-eye"></div>
+                  <div class="lego-eye"></div>
+                </div>
+                <div class="lego-mouth"></div>
+              </div>
+            </div>
+            <div class="lego-body"></div>
+            <div class="lego-legs">
+              <div class="lego-leg"></div>
+              <div class="lego-leg"></div>
+            </div>
+          </div>
+          
+          <div class="lego-character captain-america" style="--delay: 1;">
+            <div class="lego-head">
+              <div class="lego-face">
+                <div class="lego-eyes">
+                  <div class="lego-eye"></div>
+                  <div class="lego-eye"></div>
+                </div>
+                <div class="lego-mouth"></div>
+              </div>
+            </div>
+            <div class="lego-body"></div>
+            <div class="lego-legs">
+              <div class="lego-leg"></div>
+              <div class="lego-leg"></div>
+            </div>
+          </div>
+          
+          <div class="lego-character thanos" style="--delay: 2;">
+            <div class="lego-head">
+              <div class="lego-face">
+                <div class="lego-eyes">
+                  <div class="lego-eye"></div>
+                  <div class="lego-eye"></div>
+                </div>
+                <div class="lego-mouth"></div>
+              </div>
+            </div>
+            <div class="lego-body" style="background: #6a0dad; border: 3px solid #4b0082;">
+              <div style="position: absolute; width: 30px; height: 30px; background: #ffd700; border-radius: 50%;"></div>
+            </div>
+            <div class="lego-legs">
+              <div class="lego-leg" style="background: #6a0dad; border: 3px solid #4b0082;"></div>
+              <div class="lego-leg" style="background: #6a0dad; border: 3px solid #4b0082;"></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="speech-bubble" style="top: 180px; left: 180px;">
+          Friday, deploy all defenses!
+        </div>
+        
+        <div class="speech-bubble" style="top: 180px; right: 180px;">
+          I am inevitable!
+        </div>
+        
+        <div class="comic-action" style="bottom: 100px; left: 50%; transform: translateX(-50%);">
+          KABOOM! BANG! POW!
+        </div>
+      </div>-->
+      
+      <!-- Panel 3: Victory Scene 
+      <div class="comic-panel" id="panel3">
+        <div class="comic-header">
+          <h2 class="comic-title" style="font-size: 2.5rem;">VICTORY!</h2>
+          <p class="comic-subtitle">THE HEROES TRIUMPH ONCE AGAIN</p>
+        </div>
+        
+        <div class="lego-container">
+          <div class="lego-character iron-man" style="--delay: 0;">
+            <div class="lego-head">
+              <div class="lego-face">
+                <div class="lego-eyes">
+                  <div class="lego-eye"></div>
+                  <div class="lego-eye"></div>
+                </div>
+                <div class="lego-mouth"></div>
+              </div>
+            </div>
+            <div class="lego-body"></div>
+            <div class="lego-legs">
+              <div class="lego-leg"></div>
+              <div class="lego-leg"></div>
+            </div>
+          </div>
+          
+          <div class="lego-character captain-america" style="--delay: 1;">
+            <div class="lego-head">
+              <div class="lego-face">
+                <div class="lego-eyes">
+                  <div class="lego-eye"></div>
+                  <div class="lego-eye"></div>
+                </div>
+                <div class="lego-mouth"></div>
+              </div>
+            </div>
+            <div class="lego-body"></div>
+                    <div class="lego-legs">
+                        <div class="lego-leg"></div>
+                        <div class="lego-leg"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="lego-body"></div>
+                    <div class="lego-legs">
+                        <div class="lego-leg"></div>
+                        <div class="lego-leg"></div>
+                    </div>
+                </div>
+                
+                <div class="lego-character spider-man" style="--delay: 2;">
+                    <div class="lego-head">
+                        <div class="lego-face">
+                            <div class="lego-eyes">
+                                <div class="lego-eye"></div>
+                                <div class="lego-eye"></div>
+                            </div>
+                            <div class="lego-mouth"></div>
+                        </div>
+                    </div>
+                    <div class="lego-body"></div>
+                    <div class="lego-legs">
+                        <div class="lego-leg"></div>
+                        <div class="lego-leg"></div>
+                    </div>
+                </div>
+                
+                <div class="lego-character hulk" style="--delay: 3;">
+                    <div class="lego-head">
+                        <div class="lego-face">
+                            <div class="lego-eyes">
+                                <div class="lego-eye"></div>
+                                <div class="lego-eye"></div>
+                            </div>
+                            <div class="lego-mouth"></div>
+                        </div>
+                    </div>
+                    <div class="lego-body"></div>
+                    <div class="lego-legs">
+                        <div class="lego-leg"></div>
+                        <div class="lego-leg"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="speech-bubble" style="top: 180px; left: 240px;">
+                I am Iron Man!
+            </div>
+            
+            <div class="speech-bubble" style="top: 220px; right: 240px;">
+                Avengers Assemble!
+            </div>
+            
+            <div class="comic-action" style="bottom: 100px;">
+                CLICK NEXT TO BEGIN!
+            </div>-->
+    </div>
+    </section></section>
+  
+
+  <!-- ABOUT / FEST INFO -->
+  <section class="course">
+    <h1>About Taarangan 2025</h1>
+    <div class="row">
+      <div class="course-col">
+        <h3>What is Taarangan?</h3>
+        <p>
+          The eagerly awaited Annual Inter-Collegiate Cultural Festival of Thakur College of Science and Commerce (Autonomous) — now in its 13th year! This year, we embrace the Marvel Multiverse theme, bringing heroes from every realm and timeline together for an unforgettable experience.
+        </p>
+      </div>
+      <div class="course-col">
+        <h3>Theme: Multiverse Ka Mahanayak</h3>
+        <p>
+          Legends rise, heroes converge, and realms collide in a spectacle of power, courage, and imagination. Join us on <strong>18th - 20th December 2025</strong> for a celebration like no other!
+        </p>
+      </div>
+      <div class="course-col">
+        <h3>Why Join?</h3>
+        <p>
+          Experience electrifying performances, thrilling competitions, workshops, and celebrity appearances. Unleash your inner hero and be part of the multiverse madness!
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAMPUS INFO -->
+  <section class="campus">
+    <h1>About Thakur College</h1>
+    <p>
+      Thakur Educational Trust (TET) established Thakur College of Science & Commerce in 1992 with a vision to empower students with industry-relevant education. From humble beginnings to a multifaceted institution, TCSC continues to nurture talent and creativity.
+    </p>
+
+    <div class="row">
+      <div class="campus-col">
+        <img src="img/B2.jpg" alt="Thakur College Building" />
+      </div>
+      <div class="campus-col">
+        <img src="img/quad.jpg" alt="College Quadrangle" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="campus-col">
+        <img src="img/int1.jpg" alt="College Interior" />
+      </div>
+      <div class="campus-col">
+        <img src="img/rec4.jpg" alt="College Reception" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Sponsor Section (commented for now)
+  <section class="sponsors" aria-label="Our Sponsors" style="background:#111; padding:3rem 1rem; text-align:center; color:#fff;">
+    <h2 style="font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 2.5rem; margin-bottom: 2rem; color: #ff3f3f; text-shadow: 0 0 10px #ff3f3f;">
+      Our Proud Sponsors
+    </h2>
+    <div class="sponsor-logos" style="display:flex; flex-wrap:wrap; justify-content:center; gap: 2rem; max-width: 1100px; margin: 0 auto;">
+      <a href="https://sponsor1.com" target="_blank" rel="noopener" aria-label="Sponsor 1" style="display:inline-block; max-width:150px;">
+        <img src="img/sponsor1-logo.png" alt="Sponsor 1 Logo" />
+      </a>
+      <a href="https://sponsor2.com" target="_blank" rel="noopener" aria-label="Sponsor 2" style="display:inline-block; max-width:150px;">
+        <img src="img/sponsor2-logo.png" alt="Sponsor 2 Logo" />
+      </a>
+      <a href="https://sponsor3.com" target="_blank" rel="noopener" aria-label="Sponsor 3" style="display:inline-block; max-width:150px;">
+        <img src="img/sponsor3-logo.png" alt="Sponsor 3 Logo" />
+      </a>
+      <a href="https://sponsor4.com" target="_blank" rel="noopener" aria-label="Sponsor 4" style="display:inline-block; max-width:150px;">
+        <img src="img/sponsor4-logo.png" alt="Sponsor 4 Logo" />
+      </a>
+    </div>
+  </section>
+  -->
+
+  <!-- FOOTER -->
+  <footer>
+  <div class="footer-container">
+   
+    <div class="footer-left">
+        <div class="master-strange">
+      <img src="img/doctor-strange-in-the-multiverse-of-madness-doctor-strange%20(1).gif" alt=" Logo" class="footer-logo">
+</div>
+      
+      <div class="footer-socials">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fa-solid fa-file"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+       
+      </div>
+
+     
+      <p class="copyright">© 2025 by Taarangan.</p>
+    </div>
+
+   
+    <ul class="footer-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="leaderboard.html">leaderboard</a></li>
+      
+    </ul>
+  </div>
+</footer>
+
+  <!-- JavaScript for toggle menu -->
+  <script>
+    const navLinks = document.getElementById("navLinks");
+
+    function showMenu() {
+      navLinks.style.right = "0";
+    }
+
+    function hideMenu() {
+      navLinks.style.right = "-250px";
+    }
+  </script>
+   <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const panels = document.querySelectorAll('.comic-panel');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const speechBubbles = document.querySelectorAll('.speech-bubble');
+            const actionTexts = document.querySelectorAll('.comic-action');
+            let currentPanel = 0;
+            
+            // Initialize
+            showPanel(currentPanel);
+            
+            // Next button event
+            nextBtn.addEventListener('click', function() {
+                if (currentPanel < panels.length - 1) {
+                    currentPanel++;
+                    showPanel(currentPanel);
+                }
+            });
+            
+            // Previous button event
+            prevBtn.addEventListener('click', function() {
+                if (currentPanel > 0) {
+                    currentPanel--;
+                    showPanel(currentPanel);
+                }
+            });
+            
+            // Show specific panel
+            function showPanel(index) {
+                panels.forEach(panel => panel.classList.remove('active'));
+                panels[index].classList.add('active');
+                
+                // Update button states
+                prevBtn.disabled = (index === 0);
+                nextBtn.disabled = (index === panels.length - 1);
+                
+                // Animate elements in the active panel
+                setTimeout(() => {
+                    const currentSpeechBubbles = panels[index].querySelectorAll('.speech-bubble');
+                    const currentActionTexts = panels[index].querySelectorAll('.comic-action');
+                    
+                    currentSpeechBubbles.forEach((bubble, i) => {
+                        setTimeout(() => {
+                            bubble.style.opacity = 1;
+                            bubble.style.transform = 'scale(1)';
+                        }, 500 * (i + 1));
+                    });
+                    
+                    currentActionTexts.forEach((action, i) => {
+                        setTimeout(() => {
+                            action.style.opacity = 1;
+                            action.style.transform = 'translateY(0)';
+                        }, 800 * (i + 1));
+                    });
+                }, 300);
+            }
+            
+            // Add random lego dots for texture
+            function addLegoDots() {
+                const containers = document.querySelectorAll('.lego-character');
+                
+                containers.forEach(container => {
+                    for (let i = 0; i < 6; i++) {
+                        const dot = document.createElement('div');
+                        dot.classList.add('lego-dot');
+                        dot.style.top = Math.random() * 160 + 'px';
+                        dot.style.left = Math.random() * 100 + 'px';
+                        container.appendChild(dot);
+                    }
+                });
+            }
+            
+            addLegoDots();
+        });
+    </script>
+</body>
+</html>

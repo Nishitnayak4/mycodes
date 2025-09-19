@@ -1,0 +1,1264 @@
+/* Reset & base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        :root {
+            --accent: #ff3f3f;
+            --dark: #1c1f26;
+            --muted: #aaa;
+            --card: #222;
+            --text-light: #eee;
+            --background: radial-gradient(circle at center, #0b0c10, #1f2833);
+        }
+
+        body {
+            background: radial-gradient(circle at center, #0b0c10, #1f2833);
+            color: #eee;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* NAVIGATION */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #1c1f26;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 10000;
+            box-shadow: 0 0 15px #ff0000aa;
+        }
+
+        nav .logo img {
+            height: 50px;
+            filter: drop-shadow(0 0 5px #ff0000);
+        }
+
+        .nav-links {
+            position: fixed;
+            background: #111;
+            height: 100vh;
+            width: 250px;
+            top: 0;
+            right: -250px;
+            transition: 0.4s;
+            padding-top: 3rem;
+            box-shadow: -5px 0 15px #ff0000aa;
+            z-index: 9999;
+        }
+
+        .nav-links ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .nav-links ul li a {
+            color: #ff3f3f;
+            font-weight: 600;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
+            text-shadow: 0 0 5px #ff3f3f;
+        }
+
+        .nav-links ul li a:hover,
+        .nav-links ul li a.active {
+            color: #ffb347;
+            text-shadow: 0 0 15px #ffb347;
+        }
+
+        .fa-xmark {
+            position: absolute;
+            top: 1rem;
+            right: 13rem;
+            font-size: 2rem;
+            color: #ff3f3f;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .fa-xmark:hover {
+            transform: rotate(96deg);
+        }
+
+        .fa-bars {
+            font-size: 1rem;
+            color: #ff3f3f;
+            cursor: pointer;
+            user-select: none;
+            text-shadow: 0 0 10px #ff3f3f;
+        }
+
+        /* HEADER TEXT BOX */
+        /* Header background with animated starfield and glowing gradient */
+        .header {
+            position: relative;
+            background:url(img/e039b2af-9364-4b8f-5c28-538153-unscreen.gif)  no-repeat center/contain ;
+            background-size:109%;
+            overflow: hidden;
+            padding: 4rem 2rem 3rem;
+            text-align: center;
+            z-index: 1;
+            margin-bottom: -3%;
+        }
+
+        .header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+           /* background: radial-gradient(circle at center, rgba(255, 63, 63, 0.4), transparent 70%); */
+            filter: blur(100px);
+            animation: pulseGlow 6s ease-in-out infinite alternate;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+
+        .header::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-repeat: repeat;
+            background-size: 100% 100%;
+            animation: starTwinkle 10s linear infinite;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Animations */
+        @keyframes pulseGlow {
+            0% {
+                opacity: 0.6;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+
+        @keyframes starTwinkle {
+            0%, 100% {
+                background-position:
+                    20% 30%,
+                    50% 70%,
+                    80% 40%,
+                    40% 80%;
+            }
+            50% {
+                background-position:
+                    22% 32%,
+                    48% 68%,
+                    82% 42%,
+                    38% 78%;
+            }
+        }
+
+        /* Header Text Styling */
+        .text-box h1 {
+            font-family: 'Comic Neue', cursive, sans-serif;
+            font-size: 3.5rem;
+            color: #ff3f3f;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .text-box h2 {
+            font-family: 'Comic Neue', cursive, sans-serif;
+            font-size: 2.5rem;
+            color: #ffb347;
+            margin-bottom: 0.3rem;
+            animation: pulseGlow 3s infinite alternate;
+        }
+
+        .text-box h3 {
+            font-family: 'Comic Neue', cursive, sans-serif;
+            font-size: 1.5rem;
+            color: #ccc;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .text-box h1 .marvel-glow {
+            color: #e23636;
+        }
+
+        .text-box h3 .multiverse {
+            color: #00ffff;
+            animation: neonPulse 3s infinite alternate;
+        }
+
+        /* Thor hammer adjustments */
+        .thor-hammer,
+        .hammer {
+            position: absolute;
+            top: 111%;
+            width: 693px;
+            animation: hammerSwing 15s ease-in-out infinite;
+            user-select: none;
+            transform-origin: center bottom;
+            transform: translateY(-50%);
+        }
+
+        .thor-hammer {
+            left: -2%;
+            animation-delay: 0s;
+        }
+
+        .hammer {
+            right: 72%;
+            animation-delay: 2s;
+        }
+
+        @media (max-width: 547px) {
+            .thor-hammer,
+            .hammer {
+                width: 68px;
+                top: 108%;
+                left: -43%;
+            }
+            .header {
+                padding: 2rem 1rem 3rem;
+                background-size: 181%;
+            }
+            .text-box h1 {
+                font-size: 1.8rem;
+            }
+            .text-box h2 {
+                font-size: 1.3rem;
+            }
+            .text-box h3 {
+                font-size: 1rem;
+            }
+        }
+        
+        /* LEGO COMIC SECTION */
+        .comic-section {
+            padding: 4rem 2rem;
+            background: var(--dark);
+            text-align: center;
+            
+         }
+        
+        .comic-section h1 {
+            font-size: 2.8rem;
+            color: #ffb347;
+            margin-bottom: 2rem;
+            font-family: 'Bangers', cursive;
+            letter-spacing: 2px;
+        }
+
+        .comic-container {
+            width: 100%;
+            max-width: 900px;
+            height: 600px;
+            background-color: transparent;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+           
+            margin-top: 5% ;
+            justify-content: center;
+            margin-left: 19%;
+            
+        }
+        
+        .comic-panel {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background-color: transparent;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+            z-index: 1;
+        }
+        
+        .comic-panel.active {
+            opacity: 1;
+            z-index: 2;
+        }
+        
+        .comic-header {
+            text-align: center;
+            margin-bottom: 30px;
+            width: 100%;
+        }
+        
+        .comic-title {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            color: #f0131e;
+            text-shadow: 3px 3px 0 #000, 
+                         -1px -1px 0 #000, 
+                         1px -1px 0 #000, 
+                         -1px 1px 0 #000, 
+                         1px 1px 0 #000;
+            letter-spacing: 2px;
+            font-family: 'Bangers', cursive;
+        }
+        
+        .comic-subtitle {
+            font-size: 1.5rem;
+            color: #333;
+            font-weight: bold;
+            font-family: 'Bangers', cursive;
+            letter-spacing: 1px;
+        }
+        
+        .lego-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 20px;
+        }
+        
+        .lego-character {
+            width: 120px;
+            height: 180px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            animation: float 4s infinite ease-in-out;
+            cursor: pointer;
+        }
+        
+        .lego-head {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            position: relative;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .lego-body {
+            width: 100px;
+            height: 80px;
+            border-radius: 10px;
+            margin-top: -5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .lego-legs {
+            width: 120px;
+            height: 40px;
+            display: flex;
+            justify-content: space-between;
+            margin-top: -5px;
+        }
+        
+        .lego-leg {
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+        }
+        
+        /* Face styles */
+        .lego-face {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .lego-eyes {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            margin-bottom: 8px;
+        }
+        
+        .lego-eye {
+            width: 12px;
+            height: 12px;
+            background: #000;
+            border-radius: 50%;
+            position: relative;
+        }
+        
+        
+        
+        .lego-mouth {
+            width: 30px;
+            height: 10px;
+            border-radius: 0 0 15px 15px;
+            background: #000;
+            position: relative;
+        }
+        
+  
+        /* Iron Man Lego */
+.iron-man .lego-head {
+    background: #cc0000;
+    border: 3px solid #ffcc00;
+    box-shadow: 0 0 10px #ffcc00;
+}
+
+.iron-man .lego-body {
+    background: #cc0000;
+    border: 3px solid #ffcc00;
+    position: relative; /* Needed for arc reactor positioning */
+}
+
+.iron-man .lego-leg {
+    background: #cc0000;
+    border: 3px solid #ffcc00;
+}
+
+.iron-man .lego-face {
+    transform: translateY(5px);
+}
+
+.iron-man .lego-eyes {
+    display: flex;
+    justify-content: center;
+    gap: 12px; /* space between eyes */
+    margin-top: 10px;
+}
+
+.iron-man .lego-eye {
+    width: 22px;
+    height: 14px;
+    background: #fff; /* glowing white */
+    border: 3px solid #000;
+    border-radius: 4px;
+    box-shadow: 0 0 8px #00eaff, 0 0 15px #00eaff; /* glow effect */
+}
+
+.iron-man .lego-mouth {
+    width: 25px;
+    height: 5px;
+    background: #ffcc00;
+    border: 2px solid #000;
+    border-radius: 5px;
+}
+
+/* ⚡ Arc Reactor */
+.iron-man .arc-reactor {
+    position: absolute;
+    top: 57%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background: #00eaff;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 15px #00eaff, 0 0 30px #00eaff;
+    animation: reactor-glow 1.5s infinite alternate;
+}
+
+/* Glow Animation */
+@keyframes reactor-glow {
+    from {
+        box-shadow: 0 0 10px #00eaff, 0 0 20px #00eaff;
+    }
+    to {
+        box-shadow: 0 0 20px #00eaff, 0 0 40px #00eaff;
+    }
+}
+
+        /* Captain America Lego */
+        .captain-america .lego-head {
+            background: #fff;
+            border: 3px solid #0066cc;
+        }
+        
+        .captain-america .lego-body {
+            background: #0066cc;
+            border: 3px solid #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .captain-america .lego-body::before {
+            content: "";
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: #fff;
+            border-radius: 50%;
+            border: 3px solid #0066cc;
+        }
+        
+        .captain-america .lego-body::after {
+            content: "★";
+            position: absolute;
+            color: #0066cc;
+            font-size: 30px;
+        }
+        
+        .captain-america .lego-leg {
+            background: #0066cc;
+            border: 3px solid #fff;
+        }
+        
+        .captain-america .lego-face {
+            transform: translateY(5px);
+        }
+        
+        .captain-america .lego-mouth {
+            width: 20px;
+            height: 5px;
+            background: #000;
+            border-radius: 5px;
+        }
+        
+        /* Spider-Man Lego */
+        .spider-man .lego-head {
+    background: #cc0000; /* red mask */
+    border: 3px solid #000;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* so web lines don’t overflow */
+}
+
+/* Webbing pattern on mask */
+.spider-man .lego-head::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent 0,
+        transparent 18px,
+        #000 19px
+    ),
+    repeating-linear-gradient(
+        90deg,
+        transparent 0,
+        transparent 18px,
+        #000 19px
+    );
+    opacity: 0.5; /* subtle so it doesn’t overpower */
+    pointer-events: none; /* doesn’t block clicks */
+}
+
+        
+        .spider-man .lego-body {
+            background: #cc0000;
+            border: 3px solid #000;
+            position: relative;
+        }
+        
+        .spider-man .lego-body::before {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 20px;
+            background: #000;
+            border-radius: 10px;
+        }
+        
+        .spider-man .lego-body::after {
+            content: "🕷" ;
+            position: absolute;
+            width: 0;
+            background-color:transparent;
+            border-radius: 10px;
+            margin-right: 35%;
+            font-size: 2rem;   
+        }
+        
+        .spider-man .lego-leg {
+            background: #cc0000;
+            border: 3px solid #000;
+        }
+        
+        .spider-man .lego-face {
+    width: 70%;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2; /* above stripes */
+}
+
+/* Eyes */
+.spider-man .lego-eyes {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.spider-man .lego-eye {
+    width: 30px;
+    height: 40px;
+    background: #fff;
+    border: 3px solid #000;
+    border-radius: 50% 50% 0 0;
+    clip-path: polygon(10% 0, 90% 0, 70% 100%, 30% 100%);
+    box-shadow: 0 0 6px #000;
+}
+        
+        .spider-man .lego-mouth {
+            width: 25px;
+            height: 8px;
+            background: #000;
+            border-radius: 0 0 10px 10px;
+        }
+        
+        /* Hulk Lego */
+        .hulk .lego-head {
+            background: #339966;
+            border: 3px solid #206040;
+        }
+        
+        .hulk .lego-body {
+            background: #339966;
+            border: 3px solid #206040;
+            position: relative;
+        }
+        
+        .hulk .lego-body::before {
+            content: "";
+            position: absolute;
+            color: #206040;
+            font-size: 40px;
+            font-weight: bold;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        .hulk .lego-leg {
+            background: #7833b5;
+            border: 3px solid #7833b5;
+        }
+        
+        .hulk .lego-face {
+            transform: translateY(5px);
+        }
+        
+        .hulk .lego-eyes {
+            gap: 15px;
+        }
+        
+        .hulk .lego-eye {
+            width: 15px;
+            height: 15px;
+            background: #206040;
+            border: 2px solid #000;
+            border-radius: 50%;
+        }
+        
+        .hulk .lego-mouth {
+            width: 35px;
+            height: 15px;
+            background: #206040;
+            border: 2px solid #000;
+            border-radius: 0 0 15px 15px;
+        }
+        
+        /* Thanos Lego */
+        .thanos .lego-head {
+            background: #6a0dad;
+            border: 3px solid #4b0082;
+        }
+        
+        .thanos .lego-body {
+            background: #6a0dad;
+            border: 3px solid #4b0082;
+            position: relative;
+        }
+        
+        .thanos .lego-leg {
+            background: #6a0dad;
+            border: 3px solid #4b0082;
+        }
+        
+        .thanos .lego-face {
+            transform: translateY(5px);
+        }
+        
+        .thanos .lego-eyes {
+            gap: 12px;
+        }
+        
+        .thanos .lego-eye {
+            width: 12px;
+            height: 12px;
+            background: #ffd700;
+            border: 2px solid #000;
+            border-radius: 50%;
+        }
+        
+        .thanos .lego-mouth {
+            width: 25px;
+            height: 8px;
+            background: #000;
+            border-radius: 5px;
+        }
+        
+        .lego-dots {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .lego-dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
+        }
+        
+        .speech-bubble {
+            position: absolute;
+            background: #fff;
+            border: 3px solid #000;
+            border-radius: 20px;
+            padding: 15px;
+            font-family: 'Bangers', cursive;
+            font-size: 1.2rem;
+            color: #000;
+            max-width: 180px;
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.5s ease;
+            z-index: 20;
+        }
+        
+        .speech-bubble::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border-right: 3px solid #000;
+            border-bottom: 3px solid #000;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+        }
+        
+        .comic-action {
+            position: absolute;
+            font-family: 'Bangers', cursive;
+            font-size: 2.5rem;
+            color: #f0131e;
+            text-shadow: 2px 2px 0 #000;
+            letter-spacing: 1px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .comic-background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.8) 2px, transparent 3px),
+                radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.8) 2px, transparent 3px),
+                radial-gradient(circle at 40% 10%, rgba(255, 255, 255, 0.8) 2px, transparent 3px),
+                radial-gradient(circle at 65% 85%, rgba(255, 255, 255, 0.8) 2px, transparent 3px),
+                linear-gradient(135deg, #ffd700 0%, #ffcc00 100%);
+            background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+            background-position: 0 0, 0 0, 0 0, 0 0, 0 0;
+            z-index: 0;
+             display: none; 
+        }
+        
+        .comic-controls {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .comic-btn {
+            padding: 12px 25px;
+            background: #f0131e;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Bangers', cursive;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 0 #9e0c14;
+        }
+        
+        .comic-btn:hover {
+            transform: translateY(3px);
+            box-shadow: 0 2px 0 #9e0c14;
+        }
+        
+        .comic-btn:active {
+            transform: translateY(5px);
+            box-shadow: none;
+        }
+        
+        .comic-btn.prev {
+            background: #0066cc;
+            box-shadow: 0 5px 0 #004080;
+        }
+        
+        .comic-btn.prev:hover {
+            box-shadow: 0 2px 0 #004080;
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0); }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Panel specific styles */
+        #panel2 .lego-character {
+            animation-delay: calc(var(--delay) * 0.5s);
+        }
+        
+        #panel3 .lego-character {
+            animation: bounce 2s infinite ease-in-out;
+            animation-delay: calc(var(--delay) * 0.3s);
+        }
+        
+        #panel4 .lego-character {
+            animation: spin 4s infinite linear;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .comic-title {
+                font-size: 2.5rem;
+            }
+            
+            .comic-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .lego-container {
+                gap: 20px;
+            }
+            
+            .lego-character {
+                width: 80px;
+                height: 140px;
+            }
+            
+            .lego-head {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .lego-body {
+                width: 70px;
+                height: 60px;
+            }
+            
+            .lego-legs {
+                width: 80px;
+            }
+            
+            .lego-leg {
+                width: 30px;
+                height: 30px;
+            }
+            
+            .lego-face {
+                width: 45px;
+                height: 45px;
+            }
+            
+            .lego-eye {
+                width: 8px;
+                height: 8px;
+            }
+            
+            .lego-mouth {
+                width: 20px;
+                height: 6px;
+            }
+            
+            .speech-bubble {
+                font-size: 1rem;
+                max-width: 120px;
+                padding: 10px;
+            }
+            
+            .comic-container {
+                height: 466px;
+                 left: -20%;
+            }
+            .spider-man .lego-body::after {
+            content: "🕷" ;
+            position: absolute;
+            width: 0;
+            background-color:transparent;
+            border-radius: 10px;
+            margin-right: 50%;
+            font-size: 2rem;   
+        }
+            
+        }
+
+        /* ABOUT / COURSE SECTION */
+        :root {
+            --course-bg-image: url('img/taarangan theme.jpg');
+        }
+        .course {
+            padding: 4rem 2rem;
+            background: 
+                var(--course-bg-image) no-repeat center center / cover,
+                #111; /* fallback color */
+            text-align: center;
+        }
+       
+
+        .course h1 {
+            font-size: 2.8rem;
+            color: #ff3f3f;
+            margin-bottom: 2rem;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .course-col {
+            background: #222;
+            border-radius: 15px;
+            padding: 1.8rem 1.5rem;
+            width: 300px;
+            box-shadow:
+                0 0 10px #ff3f3f88,
+                inset 0 0 15px #ff3f3f44;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: default;
+            user-select: none;
+        }
+
+        .course-col:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow:
+                0 0 25px #ffb347cc,
+                inset 0 0 25px #ffb347aa;
+        }
+
+
+        /* CAMPUS SECTION */
+        :root {
+            ---course-bg-image: url('img/spider-man-no-way-home-marvel-studios.gif');
+        }
+        .campus {
+            padding: 4rem 2rem;
+            background: 
+                var(---course-bg-image) no-repeat center center / cover ,
+                #111; /* fallback color */
+            text-align: center;
+            color: #eee;
+        }
+
+        .campus h1 {
+            font-size: 2.8rem;
+            color: #ffb347;
+            margin-bottom: 1rem;
+        }
+
+        .campus p {
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        .campus .row {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .campus-col {
+            flex: 1 1 300px;
+            max-width: 441px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 0 15px #ffb34788;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .campus-col img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .campus-col:hover {
+            transform: scale(1.05);
+        }
+
+        .campus-col:hover img {
+            transform: scale(1.1);
+        }
+
+        /* CALL TO ACTION */
+        .cta {
+            background: #0b0c10;
+            padding: 5rem 2rem 6rem;
+            text-align: center;
+            position: relative;
+            overflow: visible;
+        }
+
+        .cta h1 {
+            font-size: 3rem;
+            color: #ff3f3f;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .cta h1 i {
+            font-style: normal;
+            color: #00ffff;
+        }
+
+        .spidey {
+            width: 180px;
+            animation: spideySwing 6s ease-in-out infinite;
+            user-select: none;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--dark);
+            color: var(--muted);
+            text-align: center;
+            padding: 1.5rem 1rem;
+            box-shadow: inset 0 5px 15px var(--accent);
+            user-select: none;
+            font-size: 0.9rem;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .footer-left {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            
+        }
+
+        .footer-logo {
+            max-width: 180px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .footer-socials a {
+            color: #fff;
+            transition: color 0.3s;
+        }
+
+        .footer-socials a:hover {
+            color: var(--accent, #ff3f3f);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .footer-nav {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.08rem;
+            text-align: center;
+            justify-content: flex-end;
+            margin-top: 5%;
+        }
+
+        .footer-nav li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-nav li a:hover {
+            color: var(--accent, #ff3f3f);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer-nav {
+                margin-top: 2rem;
+                text-align: center;
+                align-items: center;
+            }
+        }
+
+
+        /* Popup container hidden by default */
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.7);
+            background: #222;
+            color: #fff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(255, 63, 63, 0.5);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            z-index: 10000;
+            max-width: 90%;
+            width: 400px;
+            text-align: center;
+        }
+
+        /* Show popup with animation */
+        .popup.show {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .sponsor-logos a img {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border-radius: 8px;
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .sponsor-logos a:hover img,
+        .sponsor-logos a:focus img {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(255, 63, 63, 0.6);
+            z-index: 10;
+            position: relative;
+        }
+
+        /* Image styling */
+        .about-col img {
+            width: 100%;
+            max-width: 600px;
+            height: 340px;
+            border-radius: 12px;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        /* Align paragraph text on right side in About the college */
+        .about-col p  {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 3rem;
+            margin-top: 1rem;
+            color: #ddd;
+            margin-left: 4rem;
+            margin-right: 4rem;
+            font-family: Arial, Helvetica, sans-serif
+        }
+        
+        .about-col h1 {
+            text-align: center;
+            font-size: 3rem;
+            line-height: 1.5;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: #ddd;
+        }
+
+        /* Video centering */
+        .video-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-wrapper video {
+            width: 204%;
+            max-width: 820px;
+            border-radius: 19px;
+            display: block;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .row {
+                flex-direction: column;
+            }
+            .about-col video,
+            .about-col img {
+                max-width: 100%;
+                height: auto;
+            }
+            .about-col:last-child p {
+                text-align: left;
+            }
+        }

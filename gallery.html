@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gallery - Mithibai Kshitij</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+     :root {
+      --accent: #ff3f3f;
+      --dark: #1c1f26;
+      --muted: #aaa;
+      --card: #222;
+      --text-light: #eee;
+      --background: radial-gradient(circle at center, #0b0c10, #1f2833);
+    }
+    /* Reset */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--dark);
+      color: #eee;
+      min-height: 99vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden; 
+      overflow-y: auto;  
+    }
+    h1 {color:#ff3f3f;
+      font-size:302%;
+      font-family: cursive;
+      margin-top:4%;}
+    h2{
+    color:#ff3f3f;
+      font-size:474%;
+      font-family: cursive;
+      margin-left:11%;
+      margin-top: 0%;
+      
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      background: #1c1f26;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      z-index: 10000;
+      box-shadow: 0 0 15px #ff3f3faa;
+    }
+
+    .nav-links {
+      position: fixed;
+      background: #111;
+      height: 100vh;
+      width: 250px;
+      top: 0;
+      right: -250px;
+      transition: right 0.4s ease;
+      padding-top: 3rem;
+      box-shadow: -5px 0 15px #ff3f3faa;
+      z-index: 11000;
+    }
+
+    .nav-links ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      padding-left: 1.5rem;
+    }
+
+    .nav-links ul li a {
+      color: #ff3f3f;
+      font-weight: 600;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: color 0.3s ease;
+      text-shadow: 0 0 5px #ff3f3f;
+      display: block;
+      padding: 0.5rem 0;
+      text-decoration: none;
+    }
+
+    .nav-links ul li a.active,
+    .nav-links ul li a:hover {
+      color: #ffb347;
+      text-shadow: 0 0 15px #ffb347;
+    }
+
+    .fa-xmark {
+      position: absolute;
+      top: 1rem;
+      right: 12.8rem;
+      font-size: 2rem;
+      color: #ff3f3f;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .fa-xmark:hover {
+      transform: rotate(90deg);
+    }
+
+    .fa-bars {
+      font-size: 2rem;
+      color: #ff3f3f;
+      cursor: pointer;
+      user-select: none;
+      text-shadow: 0 0 10px #ff3f3f;
+    }
+
+    /* Gallery container */
+    main.gallery-wrapper {
+      max-width: 1200px;
+      margin: 1rem auto -12rem ;
+      padding: 0;
+      /* Remove padding to avoid gaps */
+    }
+
+    /* Masonry gallery using CSS columns */
+    .gallery {
+      column-count: 5;
+      column-gap: 1;
+      row-gap: 0;
+      /* no gap between columns */
+    }
+
+    /* Responsive columns */
+    @media (max-width: 1024px) {
+      .gallery {
+        column-count: 3;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .gallery {
+        column-count: 2;
+      }
+    }
+
+    @media (max-width: 450px) {
+      .gallery {
+        column-count: 1;
+      }
+    }
+
+    /* Gallery items */
+    .gallery-item {
+      break-inside: avoid;
+      margin-bottom: 25px;
+      /* no vertical gap */
+      border-radius: 6%;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    
+    /* Images fill width, height auto */
+    .gallery-item img {
+      width: 106%;
+      height: auto;
+      display: block;
+      transition: transform 0.4s ease;
+      border-radius: 0;
+      /* no border radius for flush edges */
+    }
+    .gallery-lager{
+      width: 100%;
+      border-radius: 
+    }
+    /* Pop effect on hover */
+    .gallery-item:hover img,
+    .gallery-item:focus img {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(255, 63, 63, 0.6);
+      z-index: 10;
+      position: relative;
+    }
+      footer {
+      background: var(--dark);
+      color: var(--muted);
+      text-align: center;
+      padding: 1.5rem 1rem;
+      box-shadow: inset 0 5px 15px var(--accent);
+      user-select: none;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+      margin: 0 0.5rem;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: #ffb347;
+    }
+    .master-strange {
+      position:relative;
+    top: -188px; /* kitna upar latkana hai */
+    left: 235px; /* kitna side me shift karna hai */
+    z-index: 11;
+}
+.master-strange img {
+    width: 235px;  
+}
+    .mister-strange {
+      position:relative;
+    top: -1766px; /* kitna upar latkana hai */
+    left: -81px; /* kitna side me shift karna hai */
+    z-index: 11;
+}
+.mister-strange img {
+    width: 193px;  
+}
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+</head>
+
+<body>
+  <nav>
+    <div class="nav-links" id="navLinks">
+      <i class="fa fa-xmark" onclick="hideMenu()" role="button" tabindex="0" aria-label="Close menu"></i>
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="team.html">TEAM</a></li>
+        <li><a href="gallery.html">GALLERY</a></li>
+        <!-- <li><a href="leaderboard.html" class="active">LEADERBOARD</a></li> -->
+        <li><a href="contact.html">CONTACT</a></li>
+        
+        </ul>
+    </div>
+    <i class="fa fa-bars" onclick="showMenu()" role="button" tabindex="0" aria-label="Open menu"></i>
+  </nav> 
+  <h1>
+     Taarangan </h1>
+     <h2>Gallery</h2>
+  
+
+  <main class="gallery-wrapper" aria-label="Event gallery">
+    <div class="gallery">
+      <!-- Small image -->
+      <div class="gallery-item">
+        <img src="photos/DSC02511.jpeg" alt="Small event image 2" />
+      </div>
+      <!-- Large image -->
+      <div class="gallery-item" style="break-inside: avoid;">
+        <img src="photos/DSC02639.jpeg" alt="Large event image 1" />
+      </div>
+      <!-- Small image -->
+      <div class="gallery-item">
+        <img src="photos/_MG_0580.JPG" alt="Small event image 3" />
+      </div>
+      <!-- Large image -->
+      <div class="gallery-item" style="break-inside: avoid;">
+        <img src="photos/ka.jpg" alt="Large event image 4" />
+      </div>
+      <!-- Small image -->
+      <div class="gallery-item">
+        <img src="photos/166A9440.JPG" alt="Small event image 5" />
+      </div>
+      <!-- Small image -->
+      <div class="gallery-item">
+        <img src="photos/DSC02810.jpeg" alt="Small event image 5" />
+      </div>
+       <!-- Large image -->
+      <div class="gallery-item" style="break-inside: avoid;">
+        <img src="photos/166A4624.JPG" alt="Large event image 4" />
+      </div>
+      <!-- Small image -->
+      <div class="gallery-item">
+        <img src="photos/166A6323.JPG" alt="Small event image 6" />
+      </div>
+      <!-- Large image -->
+      <div class="gallery-item" style="break-inside: avoid;">
+        <img src="photos/166A1458.JPG" alt="Large event image 7" />
+      </div>
+      <!-- Small image -->
+      <div class="gallery-item">
+        <img src="photos/DSC08999.JPG" alt="Small event image 8" />
+      </div>
+     <!-- Large image -->
+      <div class="gallery-item" style="break-inside: avoid;">
+        <img src="photos/166A6975.JPG" alt="Large event image 7" />
+      </div>
+      <!-- Large image -->
+      <div class="gallery-item" style="break-inside: avoid;">
+        <img src="photos/166A6975.JPG" alt="Large event image 7" />
+      </div>
+      <!-- Small image -->
+      <div class="gallery-item">
+        <img src="photos/166A5350.JPG" alt="Small event image 8" />
+      </div>
+       <!-- small image -->
+      <div class="gallery-item">
+        <img src="photos/166A5177.JPG" alt="Small event image 9" />
+      </div>
+      <!-- Large image -->
+       <div class="gallery-item" style="break-inside: avoid;">
+        <img src="photos/166A9440.JPG" alt="Large event image 7" />
+      </div>
+       <!-- Small image -->
+      <div class="gallery-item">
+        <img src="photos/IMG_1512.JPG" alt="Small event image 8" />
+      </div>
+      <!-- Small image -->
+      <div class="gallery-item">
+        <img src="photos/IMG_9933.JPG" alt="Small event image 8" />
+      </div>
+      <!-- Large image -->
+       <div class="gallery-item" style="break-inside: avoid;">
+        <img src="photos/DSC0899.JPG" alt="Large event image 7" />
+      </div>
+       <!-- Small image -->
+      <div class="gallery-item">
+        <img src="photos/166A9469.JPG" alt="Small event image 9" />
+      </div>
+      <!-- Large image -->
+      <div class="gallery-item" style="break-inside: avoid;">
+        <img src="photos/166A6323.JPG" alt="Large event image 7" />
+      </div>
+      
+      <!-- small image -->
+      <div class="gallery-item">
+        <img src="photos/DSC_0849.JPG" alt="Small event image 8" />
+      </div>
+        <!-- Small image -->
+      <div class="gallery-item">
+        <img src="photos/DSC_0984.JPG" alt="Small event image 9" />
+      </div>
+       <!-- Small image -->
+      <div class="gallery-item">
+        <img src="photos/DSC09058.JPG" alt="Small event image 9" />
+      </div>
+      <!-- Large image -->
+       <div class="gallery-item" style="break-inside: avoid;">
+        <img src="photos/BEAT.JPG" alt="Large event image 4" />
+      </div>
+       <!-- Small image -->
+      <div class="gallery-item">
+        <img src="photos/DSC09014.JPG" alt="Small event image 9" />
+      </div>
+       <!-- Small image -->
+      <div class="gallery-item">
+        <img src="photos/DSC_0543.JPG" alt="Small event image 9" />
+      </div>
+       <!-- Small image -->
+      <div class="gallery-item">
+        <img src="photos/IMG_2920.JPG" alt="Small event image 9" />
+      </div>
+       <!-- Small image -->
+      <div class="gallery-item">
+        <img src="photos/166A3158.JPG" alt="Small event image 9" />
+      </div>
+         <div class="gallery-item">
+        <img src="photos/166A3158.JPG" alt="Small event image 9" />
+      </div>
+    </div>  
+     <div class="master-strange">
+      <img src="img/uh.gif" alt=" Logo" class="footer-logo">
+      
+</div>
+    
+  </main> 
+  <footer>
+    <div class="footer-content">
+      <h4>About This Website</h4>
+      <p>
+        This is the official site for Taarangana 2k25 — the ultimate Marvel-themed cultural fest at Thakur College. Follow us on Instagram for live updates and behind-the-scenes madness!
+      </p>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/taarangan/" target="_blank" rel="noopener" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.facebook.com/taarangan" target="_blank" rel="noopener" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://twitter.com/taarangan" target="_blank" rel="noopener" aria-label="Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </div>
+      <p class="credits">Created with ❤️ by NISHIT NAYAK</p>
+      <p>&copy; 2025 Taarangan. All rights reserved.</p>
+    </div>
+  </footer>
+  <script>
+    const navLinks = document.getElementById("navLinks");
+
+    function showMenu() {
+      navLinks.style.right = "0";
+    }
+
+    function hideMenu() {
+      navLinks.style.right = "-250px";
+    }
+  </script>
+</body>
+
+</html>

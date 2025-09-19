@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taarangan 2k25 - About the Event & College</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,600,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+</head>
+
+<body>
+  <section class="sub-header">
+    <nav>
+      <a href="index.html"><img src="photos/output-onlinegiftools.gif" alt="Taarangan Logo" /></a>
+      <div class="nav-links" id="navLinks">
+        <i class="fa fa-close" onclick="hideMenu()" role="button" tabindex="0" aria-label="Close menu"></i>
+        <ul>
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+          <li><a href="team.html">TEAM</a></li>
+          <li><a href="events.html">EVENTS</a></li>
+          <!--<li><a href="leaderboard.html" class="active">LEADERBOARD</a></li>-->
+          <li><a href="contact.html">CONTACT</a></li>
+          <li><a href="gallery.html">GALLERY</a></li>
+          <li> <i class="fa fa-instagram" style="margin-right:6%" ></i> <i class="fa fa-facebook-square" style="margin-right:6%"></i> <i class="fa-solid fa-user"></i> </li>
+        </ul>
+      </div>
+      <i class="fa fa-bars" onclick="showMenu()" role="button" tabindex="0" aria-label="Open menu"></i>
+    </nav>
+    
+  </section>
+
+  <!------- about us content -------->
+  <main class="about-us">
+    <div class="row">
+      <div class="about-col">
+        <h1>About Taarangan 2k25</h1>
+        
+      <div class="about-col">
+        <div class="video-wrapper">
+          <video autoplay loop muted playsinline>
+            <source src="photos/Video-84.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div><p>
+          Taarangan is the eagerly awaited Annual Inter-Collegiate Cultural Festival of Thakur College of Science and Commerce (Autonomous). Now in its 18th year, Taarangan 2k25 embraces the Marvel Multiverse theme, bringing together students from across the country to celebrate creativity, talent, and culture. The fest features electrifying performances, thrilling competitions, workshops, and celebrity appearances, making it a spectacular event for all participants and attendees.
+        </p>
+      </div>
+    </div><br><br><br><br>
+
+    <div class="row" style="margin-top: 3rem;">
+      <div class="about-col">
+        <div class="about-col">
+          <h1>About the College</h1>
+          <img src="img/B2.jpg" alt="Taarangan poster" style="width: 100%; border-radius: 12px;" />
+        </div>
+        <p>
+          Thakur Educational Trust (TET) incepted Thakur College of Science & Commerce (TCSC) in the year 1992 with the purpose of enhancing human capabilities and a strong commitment to provide best and industry relevant education to students. Having started with a single division of 58 students of Junior Science, it has grown to a multifaceted institution that offers a wide range of programs in various fields.
+          <br>TCSC caters to all students, from diverse backgrounds and provides a wide choice of opportunities for academic enhancement and all-round growth. Each student is offered an open platform to display his/ her talent or varied skill sets, in addition to curricular, co-curricular and extra- curricular activities. These varieties of programs inculcate and nurture the qualities of students such as leadership, administrative, organizing capability and managing skills.
+          <br>TCSC is an NAAC accrediated institution with its processes standardised under ISO 21001:2018. University Grants Commission (UGC) has conferred ‘AUTONOMOUS STATUS’ (affiliated to University of Mumbai) for the period of 10 years to TCSC from the academic year 2019-2020. This Autonomous status gives greater academic freedom to design innovative programmes to meet industry needs, skill-based courses for employability and a quest for excellence.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+  <div class="footer-container">
+   
+    <div class="footer-left">
+        <div class="master-strange">
+      <img src="img/doctor-strange-in-the-multiverse-of-madness-doctor-strange%20(1).gif" alt=" Logo" class="footer-logo">
+</div>
+      
+      <div class="footer-socials">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fa-solid fa-file"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+       
+      </div>
+
+     
+      <p class="copyright">© 2025 by Taarangan.</p>
+    </div>
+
+   
+    <ul class="footer-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="leaderboard.html">leaderboard</a></li>
+      
+    </ul>
+  </div>
+ </footer>
+  <!----JavaScript for toggle menu---->
+  <script>
+    var navLinks = document.getElementById("navLinks");
+
+    function showMenu() {
+      navLinks.style.right = "0";
+    }
+
+    function hideMenu() {
+      navLinks.style.right = "-400px";
+    }
+  </script>
+ 
+</body>
+
+</html>

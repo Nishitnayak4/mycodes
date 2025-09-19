@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marvel Universe Footer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Marvel:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #000;
+            color: #FFF;
+            font-family: 'Marvel', sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+        
+        .main-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .marvel-text {
+            font-family: 'Bangers', cursive;
+            font-size: 8rem;
+            color: #ED1D24;
+            text-shadow: 4px 4px 0 #FFF, 8px 8px 0 rgba(0, 0, 0, 0.5);
+            letter-spacing: 5px;
+            animation: float 3s ease-in-out infinite;
+            z-index: 2;
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .hero-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.2;
+            z-index: 1;
+        }
+        
+        footer {
+            background: linear-gradient(to right, #000, #ED1D24, #000);
+            color: white;
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+            border-top: 3px solid #FFF;
+            box-shadow: 0 -5px 20px rgba(237, 29, 36, 0.5);
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+        
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            padding: 1rem;
+        }
+        
+        .footer-section h3 {
+            font-family: 'Bangers', cursive;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #FFF;
+            text-shadow: 2px 2px 0 #000;
+            letter-spacing: 1px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ED1D24;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            color: #FFF;
+            text-decoration: none;
+        }
+        
+        .social-link i {
+            font-size: 1.5rem;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.1);
+            background-color: #FFF;
+            color: #ED1D24;
+        }
+        
+        .location-info p {
+            margin: 0.5rem 0;
+            line-height: 1.6;
+        }
+        
+        .location-icon {
+            font-size: 2rem;
+            color: #ED1D24;
+            margin-bottom: 1rem;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .footer-logo {
+            width: 120px;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .shield-container {
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            animation: spin 20s linear infinite;
+            opacity: 0.2;
+            z-index: 1;
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .comic-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .comic-particle {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: rgba(237, 29, 36, 0.6);
+            border-radius: 50%;
+            animation: float-particle 15s linear infinite;
+        }
+        
+        @keyframes float-particle {
+            0% { transform: translateY(100%) translateX(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100%) translateX(100px); opacity: 0; }
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
+        }
+        
+        .avengers-assemble {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #00F, #0F0, #FF0, #F00);
+            animation: assemble 5s linear infinite;
+        }
+        
+        @keyframes assemble {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .marvel-text {
+                font-size: 4rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .shield-container {
+                width: 100px;
+                height: 100px;
+                bottom: -30px;
+                right: -30px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" rel="stylesheet">
+    <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/fontawesome.min.css">
+
+</head>
+<body>
+
+<!-- <div  class="main-content">
+    <img src="https://placehold.co/1920x1080" alt="Marvel superheroes assembled for battle with dramatic lighting and action poses" class="hero-bg">
+    <h1 class="marvel-text">MARVEL UNIVERSE</h1>
+</div> -->
+
+<footer>
+    <div class="comic-particles" id="particles"></div>
+    
+    <div class="shield-container">
+        <svg viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="45" fill="#ED1D24"/>
+            <circle cx="50" cy="50" r="40" fill="#FFF"/>
+            <circle cx="50" cy="50" r="35" fill="#ED1D24"/>
+            <circle cx="50" cy="50" r="30" fill="#00539B"/>
+            <path d="M50 15 L60 40 L85 50 L60 60 L50 85 L40 60 L15 50 L40 40 Z" fill="#FFF"/>
+        </svg>
+    </div>
+    
+    <div class="footer-content">
+        <div class="footer-section">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Marvel_Logo.svg/2560px-Marvel_Logo.svg.png" alt="Marvel logo" class="footer-logo">
+            <p>"With great power comes great responsibility."</p>
+        
+        <div class="social-links">
+              
+                <a href="index.html" class="social-link"><i class="fa-solid fa-house"></i></a>
+                <a href="about.html" class="social-link"><i class="fa-solid fa-user"></i></a>
+                <a href="team.html" class="social-link"><i class="fa-solid fa-users"></i></a>
+                <a href="event.html" class="social-link"><i class="fa-solid fa-trophy"></i></a> 
+                <a href="gallery.html" class="social-link"><i class="fa-solid fa-camera-retro"></i></a>
+                
+               
+            </div></div>
+        <div class="footer-section">
+            <h3>CONNECT WITH US</h3>
+            <h4>msg pr head bantai for more info</h4>
+            <h5>12ka442ka1</h5>
+            <div class="social-links">
+              
+                <a href="#" class="social-link"><i class="fa-solid fa-file"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+               
+            </div>
+        </div>
+        
+        <div class="footer-section">
+            <h3>OUR HEADQUARTERS</h3>
+            <div class="location-icon">
+                <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="location-info">
+                <p>Marvel Entertainment, LLC</p>
+                <p>135 W. 50th Street</p>
+                <p>New York, NY 10020</p>
+                <p>United States</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="copyright">
+        <p>© 2023 MARVEL. All rights reserved.</p>
+    </div>
+    
+    <div class="avengers-assemble"></div>
+</footer>
+
+<script>
+    // Create comic book particles
+    document.addEventListener('DOMContentLoaded', function() {
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 20;
+        
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('comic-particle');
+            
+            // Random positioning
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+            
+            // Random size
+            const size = 10 + Math.random() * 20;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            
+            // Random opacity
+            particle.style.opacity = 0.3 + Math.random() * 0.7;
+            
+            // Random animation duration
+            const duration = 10 + Math.random() * 20;
+            particle.style.animationDuration = `${duration}s`;
+            
+            // Random delay
+            particle.style.animationDelay = `${Math.random() * 10}s`;
+            
+            particlesContainer.appendChild(particle);
+        }
+        
+        // Add interactive effect on social links
+        const socialLinks = document.querySelectorAll('.social-link');
+        socialLinks.forEach(link => {
+            link.addEventListener('mouseover', function() {
+                this.style.boxShadow = `0 8px 15px rgba(237, 29, 36, 0.8)`;
+            });
+            
+            link.addEventListener('mouseout', function() {
+                this.style.boxShadow = `0 4px 6px rgba(0, 0, 0, 0.3)`;
+            });
+        });
+    });
+    
+    // Hero text animation
+    const heroText = document.querySelector('.marvel-text');
+    window.addEventListener('scroll', function() {
+        const scrollValue = window.scrollY;
+        heroText.style.transform = `translateY(${scrollValue * 0.5}px)`;
+    });
+</script>
+
+</body>
+</html>
