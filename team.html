@@ -31,82 +31,81 @@
     }
 
     /* NAVIGATION */
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #1c1f26;
-      padding: 1rem 2rem;
-      position: sticky;
-      top: 0;
-      z-index: 10000;
-      box-shadow: 0 0 15px #ff0000aa;
-    }
+   nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #1c1f26;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 10000;
+            box-shadow: 0 0 15px #ff0000aa;
+        }
 
-    nav .logo img {
-      height: 50px;
-      filter: drop-shadow(0 0 5px #ff0000);
-    }
+        nav .logo img {
+            height: 80px;
+            filter: drop-shadow(0 0 5px #ff0000);
+        }
 
-    .nav-links {
-      position: fixed;
-      background: #111;
-      height: 100vh;
-      width: 250px;
-      top: 0;
-      right: -250px;
-      transition: 0.4s;
-      padding-top: 3rem;
-      box-shadow: -5px 0 15px #ff0000aa;
-      z-index: 9999;
-    }
+        .nav-links {
+            position: fixed;
+            background: #111;
+            height: 100vh;
+            width: 250px;
+            top: 0;
+            right: -250px;
+            transition: 0.4s;
+            padding-top: 3rem;
+            box-shadow: -5px 0 15px #ff0000aa;
+            z-index: 9999;
+        }
 
-    .nav-links ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      padding-left: 1.5rem;
-    }
+        .nav-links ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            padding-left: 1.5rem;
+        }
 
-    .nav-links ul li a {
-      color: #ff3f3f;
-      font-weight: 600;
-      font-size: 1.2rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      transition: color 0.3s ease;
-      text-shadow: 0 0 5px #ff3f3f;
-    }
+        .nav-links ul li a {
+            color: #ff3f3f;
+            font-weight: 600;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
+            text-shadow: 0 0 5px #ff3f3f;
+        }
 
-    .nav-links ul li a:hover,
-    .nav-links ul li a.active {
-      color: #ffb347;
-      text-shadow: 0 0 15px #ffb347;
-    }
+        .nav-links ul li a:hover,
+        .nav-links ul li a.active {
+            color: #ffb347;
+            text-shadow: 0 0 15px #ffb347;
+        }
 
-    .fa-xmark {
-      position: absolute;
-      top: 1rem;
-      right: 1.5rem;
-      font-size: 2rem;
-      color: #ff3f3f;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
+        .fa-xmark {
+            position: absolute;
+            top: 2rem;
+            right: 13rem;
+            font-size: 2rem;
+            color: #ff3f3f;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
 
-    .fa-xmark:hover {
-      transform: rotate(90deg);
-    }
+        .fa-xmark:hover {
+            transform: rotate(96deg);
+        }
 
-    .fa-bars {
-      font-size: 2rem;
-      color: #ff3f3f;
-      cursor: pointer;
-      display: none;
-      user-select: none;
-      text-shadow: 0 0 10px #ff3f3f;
-    }
+        .fa-bars {
+            font-size: 2rem;
+            color: #ff3f3f;
+            cursor: pointer;
+            user-select: none;
+            text-shadow: 0 0 10px #ff3f3f;
+        }
 
     /* HEADER TEXT BOX */
     .header {
@@ -123,7 +122,7 @@
       color: #ff3f3f;
       text-transform: uppercase;
       letter-spacing: 0.2em;
-      text-shadow:
+     /* text-shadow:
         0 0 10px #ff3f3f,
         0 0 20px #ff3f3f,
         0 0 30px #ff3f3f,
@@ -132,25 +131,25 @@
         0 0 80px #ffb347,
         0 0 100px #ffb347,
         0 0 150px #ffb347;
-      animation: flicker 3s infinite alternate;
+      animation: flicker 3s infinite alternate;*/
       margin-bottom: 0.6rem;
     }
 
     .text-box h1 .marvel-glow {
       color: #e23636;
-      text-shadow:
+     text-shadow:
         0 0 10px #e23636,
         0 0 20px #ff3f3f,
         0 0 30px #ff3f3f;
-      animation: pulseGlow 2.4s infinite alternate;
+      animation: pulseGlow 0.7s infinite alternate;
     }
 
     .text-box h2 {
       font-size: 2.5rem;
       color: #ffb347;
       margin-bottom: 0.3rem;
-      text-shadow: 0 0 10px #ffb347;
-      animation: pulseGlow 3s infinite alternate;
+     /* text-shadow: 0 0 10px #ffb347;
+      animation: pulseGlow 3s infinite alternate;*/
     }
 
     .text-box h3 {
@@ -376,7 +375,7 @@
   <section class="header">
     <nav>
       <div class="logo">
-        <img src="icons/taarangan-white.png" alt="Taarangan Logo" />
+        <img src="img/taarangan%20WHITE.png" alt="Taarangan Logo" />
       </div>
       <div class="nav-links" id="navLinks">
         <i class="fa fa-xmark" onclick="hideMenu()"></i>
