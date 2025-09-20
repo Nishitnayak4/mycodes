@@ -38,7 +38,7 @@
         }
 
         nav .logo img {
-            height: 50px;
+            height: 80px;
             filter: drop-shadow(0 0 5px #ff0000);
         }
 
@@ -81,7 +81,7 @@
 
         .fa-xmark {
             position: absolute;
-            top: 1rem;
+            top: 2rem;
             right: 13rem;
             font-size: 2rem;
             color: #ff3f3f;
@@ -94,7 +94,7 @@
         }
 
         .fa-bars {
-            font-size: 1rem;
+            font-size: 2rem;
             color: #ff3f3f;
             cursor: pointer;
             user-select: none;
@@ -1101,7 +1101,7 @@
         }
 
         .footer-logo {
-            max-width: 180px;
+            max-width: 331px;
         }
 
         .footer-socials {
